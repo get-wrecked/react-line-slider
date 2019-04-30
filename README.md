@@ -2,7 +2,7 @@
 
 > Scroll horizontally with the mousewheel!
 
-[![NPM](https://img.shields.io/npm/v/react-scroll-horizontal.svg)](https://www.npmjs.com/package/react-line-slider)
+[![NPM](https://img.shields.io/npm/v/react-line-slider.svg)](https://www.npmjs.com/package/react-line-slider)
 
 [demo](http://hew.github.io/react-scroll-horizontal)
 
