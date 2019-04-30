@@ -24,6 +24,9 @@ export default class ScrollHorizontal extends Component {
       const orig = document.firstElementChild.className
       document.firstElementChild.className = orig + (orig ? ' ' : '') + 'locked__'
     }
+
+    let el = DOM.findDOMNode(this.hScrollParent)
+    el.addEventListener('wheel', this.onScrollStart, false, {passive: true})
   }
 
   componentWillUnmount() {
@@ -33,6 +36,9 @@ export default class ScrollHorizontal extends Component {
         ''
       )
     }
+
+    let el = DOM.findDOMNode(this.hScrollParent)
+    el.removeEventListener('wheel', this.onScrollStart, false, {passive: true})
   }
 
   componentDidUpdate = (prevProps) => {
@@ -171,7 +177,6 @@ export default class ScrollHorizontal extends Component {
 
     return (
       <div
-        onWheel={this.onScrollStart}
         ref={r => {
           this.hScrollParent = r
         }}

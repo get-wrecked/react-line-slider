@@ -8025,6 +8025,14 @@ react-error-overlay@^4.0.0:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
   integrity sha512-FlsPxavEyMuR6TjVbSSywovXSEyOg6ZDj5+Z8nbsRl9EkOzAhEIcS+GLoQDC5fz/t9suhUXWmUrOBrgeUvrMxw==
 
+react-event-injector@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-event-injector/-/react-event-injector-1.1.2.tgz#695d25969667650d5de4607d17e6050eb9bdd65d"
+  integrity sha512-gSBsMinT3yeqGOqL6VoeekqdWYgMQ6O2rfYr5zPhNvE5qR3aL+xbn9Kjv4dLeL25gOSRJA/roDre9L5fHj89og==
+  dependencies:
+    prop-types "^15.6.2"
+    tiny-invariant "^1.0.1"
+
 react-motion@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/react-motion/-/react-motion-0.5.2.tgz#0dd3a69e411316567927917c6626551ba0607316"
@@ -9444,6 +9452,11 @@ timers-browserify@^2.0.4:
   integrity sha512-YvC1SV1XdOUaL6gx5CoGroT3Gu49pK9+TZ38ErPldOWW4j49GI1HKs9DV+KGq/w6y+LZ72W1c8cKz2vzY+qpzg==
   dependencies:
     setimmediate "^1.0.4"
+
+tiny-invariant@^1.0.1:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.0.4.tgz#346b5415fd93cb696b0c4e8a96697ff590f92463"
+  integrity sha512-lMhRd/djQJ3MoaHEBrw8e2/uM4rs9YMNk0iOr8rHQ0QdbM7D4l0gFl3szKdeixrlyfm9Zqi4dxHCM2qVG8ND5g==
 
 tmp-promise@1.0.5:
   version "1.0.5"
