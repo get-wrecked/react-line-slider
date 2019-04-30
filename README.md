@@ -2,12 +2,12 @@
 
 > Scroll horizontally with the mousewheel!
 
-[![NPM](https://img.shields.io/npm/v/react-scroll-horizontal.svg)](https://www.npmjs.com/package/react-scroll-horizontal)
+[![NPM](https://img.shields.io/npm/v/react-scroll-horizontal.svg)](https://www.npmjs.com/package/react-line-slider)
 
 [demo](http://hew.github.io/react-scroll-horizontal)
 
 ```bash
-npm install --save react-scroll-horizontal
+npm install --save react-line-slider
 ```
 
 ## How it Works
@@ -22,7 +22,7 @@ ___
 ## Usage
 
 ```bash
-npm i react-scroll-horizontal
+npm i react-line-slider
 ```
 
 ```jsx
