@@ -13,7 +13,6 @@ export default class ScrollHorizontal extends Component {
     this.onScrollStart = this.onScrollStart.bind(this)
     this.resetMin = this.resetMin.bind(this)
     this.resetMax = this.resetMax.bind(this)
-    this.node = React.createRef()
 
     if (props.onReachStart) this.onReachStart = throttle(props.onReachStart, 800, { trailing: false })
     if (props.onReachEnd) this.onReachEnd = throttle(props.onReachEnd, 800, { trailing: false })
@@ -26,7 +25,7 @@ export default class ScrollHorizontal extends Component {
       document.firstElementChild.className = orig + (orig ? ' ' : '') + 'locked__'
     }
 
-    let el = DOM.findDOMNode(this.node)
+    let el = DOM.findDOMNode(this.scroll)
     el.addEventListener('wheel', this.onScrollStart, false, {passive: true})
   }
 
@@ -38,7 +37,7 @@ export default class ScrollHorizontal extends Component {
       )
     }
 
-    let el = DOM.findDOMNode(this.node)
+    let el = DOM.findDOMNode(this.scroll)
     el.removeEventListener('wheel', this.onScrollStart, false, {passive: true})
   }
 
@@ -55,7 +54,7 @@ export default class ScrollHorizontal extends Component {
         animValues: this.props.scrollToValue
       }, this.calculate())
     } else if(this.props.id !== prevProps.id) {
-      this.node = React.createRef();
+      this.scroll = `update-${new Date().getTime()}`;
     } else {
       this.calculate()
     }
@@ -109,7 +108,7 @@ export default class ScrollHorizontal extends Component {
   }
 
   caniscroll() {
-    let el = DOM.findDOMNode(this.node)
+    let el = DOM.findDOMNode(this.scroll)
     let rect = el.getBoundingClientRect()
     let scroller = el.firstElementChild
 
@@ -125,7 +124,7 @@ export default class ScrollHorizontal extends Component {
     // Lazy to calculate, prevent max recurse call
     this.calculate.timer = setTimeout(() => {
       // Calculate the bounds of the scroll area
-      let el = DOM.findDOMNode(this.node)
+      let el = DOM.findDOMNode(this.scroll)
 
       let max = el.lastElementChild.scrollWidth
       let win = el.offsetWidth
@@ -182,7 +181,7 @@ export default class ScrollHorizontal extends Component {
     return (
       <div
         id={this.props.id || 'horizontalscroll'}
-        ref={this.node}
+        ref={el => this.scroll = el}
         style={styles}
         className={`scroll-horizontal ${this.props.className || ''}`}
       >
