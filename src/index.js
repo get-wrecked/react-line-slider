@@ -177,6 +177,7 @@ export default class ScrollHorizontal extends Component {
 
     return (
       <div
+        id={this.props.id || 'horizontalscroll'}
         ref={r => {
           this.hScrollParent = r
         }}
