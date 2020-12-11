@@ -53,8 +53,6 @@ export default class ScrollHorizontal extends Component {
       this.setState({
         animValues: this.props.scrollToValue
       }, this.calculate())
-    } else if(this.props.id !== prevProps.id) {
-      this.scroll = `update-${new Date().getTime()}`;
     } else {
       this.calculate()
     }
