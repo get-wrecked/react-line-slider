@@ -13,6 +13,7 @@ export default class ScrollHorizontal extends Component {
     this.onScrollStart = this.onScrollStart.bind(this)
     this.resetMin = this.resetMin.bind(this)
     this.resetMax = this.resetMax.bind(this)
+    this.node = React.createRef()
 
     if (props.onReachStart) this.onReachStart = throttle(props.onReachStart, 800, { trailing: false })
     if (props.onReachEnd) this.onReachEnd = throttle(props.onReachEnd, 800, { trailing: false })
@@ -25,7 +26,7 @@ export default class ScrollHorizontal extends Component {
       document.firstElementChild.className = orig + (orig ? ' ' : '') + 'locked__'
     }
 
-    let el = DOM.findDOMNode(this.hScrollParent)
+    let el = DOM.findDOMNode(this.node)
     el.addEventListener('wheel', this.onScrollStart, false, {passive: true})
   }
 
@@ -37,7 +38,7 @@ export default class ScrollHorizontal extends Component {
       )
     }
 
-    let el = DOM.findDOMNode(this.hScrollParent)
+    let el = DOM.findDOMNode(this.node)
     el.removeEventListener('wheel', this.onScrollStart, false, {passive: true})
   }
 
@@ -53,6 +54,8 @@ export default class ScrollHorizontal extends Component {
       this.setState({
         animValues: this.props.scrollToValue
       }, this.calculate())
+    } else if(this.props.id !== prevProps.id) {
+      this.node = React.createRef();
     } else {
       this.calculate()
     }
@@ -92,7 +95,8 @@ export default class ScrollHorizontal extends Component {
       this.props.children === nextProps.children &&
       this.state.animValues === nextState.animValues &&
       this.props.animValues === nextProps.animValues &&
-      this.props.scrollToValue === nextProps.scrollToValue
+      this.props.scrollToValue === nextProps.scrollToValue &&
+      this.props.id === nextProps.id
     ) {
       return false
     }
@@ -105,7 +109,7 @@ export default class ScrollHorizontal extends Component {
   }
 
   caniscroll() {
-    let el = DOM.findDOMNode(this.hScrollParent)
+    let el = DOM.findDOMNode(this.node)
     let rect = el.getBoundingClientRect()
     let scroller = el.firstElementChild
 
@@ -121,7 +125,7 @@ export default class ScrollHorizontal extends Component {
     // Lazy to calculate, prevent max recurse call
     this.calculate.timer = setTimeout(() => {
       // Calculate the bounds of the scroll area
-      let el = DOM.findDOMNode(this.hScrollParent)
+      let el = DOM.findDOMNode(this.node)
 
       let max = el.lastElementChild.scrollWidth
       let win = el.offsetWidth
@@ -178,9 +182,7 @@ export default class ScrollHorizontal extends Component {
     return (
       <div
         id={this.props.id || 'horizontalscroll'}
-        ref={r => {
-          this.hScrollParent = r
-        }}
+        ref={this.node}
         style={styles}
         className={`scroll-horizontal ${this.props.className || ''}`}
       >
